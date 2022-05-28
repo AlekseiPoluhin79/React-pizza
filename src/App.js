@@ -23,6 +23,7 @@ function App() {
 						{pizzas.map((obj) => (
 							//можно использовать вместо перечисления свойст объекта spread-оператор  т.е. PizzaBlock(...obj)
 							<PizzaBlock
+								key={obj.id}
 								title={obj.title}
 								price={obj.price}
 								image={obj.imageUrl}
