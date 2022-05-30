@@ -6,9 +6,17 @@ import PizzaBlock from './components/PizzaBlock';
 import Sort from './components/Sort';
 import './scss/app.scss';
 
-import pizzas from '../src/components/assets/pazzas.json';
+//import pizzas from '../src/components/assets/pazzas.json';
 
 function App() {
+	const [ items, setItems ] = React.useState([]);
+
+	React.useEffect(() => {
+		fetch('https://6293392a089f87a57abc2c6c.mockapi.io/items').then((res) => res.json()).then((arr) => {
+			setItems(arr);
+		});
+	}, []);
+
 	return (
 		<div className="wrapper">
 			<Header />
@@ -20,7 +28,7 @@ function App() {
 					</div>
 					<h2 className="content__title">Все пиццы</h2>
 					<div className="content__items">
-						{pizzas.map((obj) => (
+						{items.map((obj) => (
 							//можно использовать вместо перечисления свойст объекта spread-оператор  т.е. PizzaBlock(...obj)
 							<PizzaBlock
 								key={obj.id}
