@@ -11,10 +11,11 @@ const Home = () => {
 		fetch('https://6293392a089f87a57abc2c6c.mockapi.io/items').then((res) => res.json()).then((arr) => {
 			setItems(arr);
 		});
+		window.scrollTo(0, 0);
 	}, []);
 
 	return (
-		<React.Fragment>
+		<div className="container">
 			<div className="content__top">
 				<Categories />
 				<Sort />
@@ -34,7 +35,7 @@ const Home = () => {
 					/>
 				))}
 			</div>
-		</React.Fragment>
+		</div>
 	);
 };
 export default Home;
