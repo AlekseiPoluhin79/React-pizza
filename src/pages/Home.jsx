@@ -4,7 +4,7 @@ import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock';
 
-const Home = () => {
+const Home = (searchValue) => {
 	const [ items, setItems ] = React.useState([]);
 
 	React.useEffect(() => {
