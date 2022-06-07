@@ -3,16 +3,23 @@ import React from 'react';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock';
+import Pagination from '../components/Pagination';
 
 const Home = (searchValue) => {
 	const [ items, setItems ] = React.useState([]);
+	const [ carrentPage, setCarrentPage ] = React.useState(1);
 
-	React.useEffect(() => {
-		fetch('https://6293392a089f87a57abc2c6c.mockapi.io/items').then((res) => res.json()).then((arr) => {
-			setItems(arr);
-		});
-		window.scrollTo(0, 0);
-	}, []);
+	React.useEffect(
+		() => {
+			fetch(`https://6293392a089f87a57abc2c6c.mockapi.io/items?page=${carrentPage}&limit=4&`)
+				.then((res) => res.json())
+				.then((arr) => {
+					setItems(arr);
+				});
+			window.scrollTo(0, 0);
+		},
+		[ carrentPage ]
+	);
 
 	return (
 		<div className="container">
@@ -35,6 +42,7 @@ const Home = (searchValue) => {
 					/>
 				))}
 			</div>
+			<Pagination onChangePage={(namber) => setCarrentPage(namber)} />
 		</div>
 	);
 };
