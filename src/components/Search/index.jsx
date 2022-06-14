@@ -3,9 +3,18 @@ import React from 'react';
 import style from './Search.module.scss';
 
 const Search = ({ searchValue, setSearchValue }) => {
+	const inputRef = React.useRef();
+
+	const onClickClear = () => {
+		setSearchValue('');
+		//document.querySelector('input').focus();  -так нельзя обращаться в Реакте. Вся логика должна идти через виртуальный ДОМ.
+		inputRef.current.focus();
+	};
+
 	return (
 		<div className={style.root}>
 			<input
+				ref={inputRef}
 				value={searchValue}
 				onChange={(event) => setSearchValue(event.target.value)}
 				className={style.input}
@@ -13,7 +22,7 @@ const Search = ({ searchValue, setSearchValue }) => {
 			/>
 			{searchValue && (
 				<svg
-					onClick={() => setSearchValue('')}
+					onClick={onClickClear}
 					className={style.clearIcon}
 					height="48"
 					viewBox="0 0 48 48"

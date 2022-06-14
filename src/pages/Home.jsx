@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -11,11 +12,15 @@ const Home = (searchValue) => {
 
 	React.useEffect(
 		() => {
-			fetch(`https://6293392a089f87a57abc2c6c.mockapi.io/items?page=${carrentPage}&limit=4&`)
-				.then((res) => res.json())
-				.then((arr) => {
-					setItems(arr);
-				});
+			//	fetch(`https://6293392a089f87a57abc2c6c.mockapi.io/items?page=${carrentPage}&limit=4&`)
+			//		.then((res) => res.json())
+			//		.then((arr) => {
+			//			setItems(arr);
+			//		});
+			axios.get(`https://6293392a089f87a57abc2c6c.mockapi.io/items?page=${carrentPage}&limit=4&`).then((res) => {
+				setItems(res.data);
+			});
+
 			window.scrollTo(0, 0);
 		},
 		[ carrentPage ]
