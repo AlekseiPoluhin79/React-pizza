@@ -1,14 +1,26 @@
 import React from 'react';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { setcategoryId } from '../redux/slices/filterSlice';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock';
 import Pagination from '../components/Pagination';
 
-const Home = (searchValue) => {
+const Home = () => {
+	const dispatch = useDispatch();
+	const categoryId = useSelector((state) => state.filter.categoryId);
+	const [ sortType, setSortType ] = React.useState({
+		name: 'популярности',
+		sortProperty: 'rating'
+	});
 	const [ items, setItems ] = React.useState([]);
 	const [ carrentPage, setCarrentPage ] = React.useState(1);
+
+	const onChangeCategory = (id) => {
+		dispatch(setcategoryId(id));
+	};
 
 	React.useEffect(
 		() => {
@@ -29,8 +41,8 @@ const Home = (searchValue) => {
 	return (
 		<div className="container">
 			<div className="content__top">
-				<Categories />
-				<Sort />
+				<Categories value={categoryId} onChangeCategory={onChangeCategory} />
+				<Sort value={sortType} onChangeSort={(i) => setSortType(i)} />
 			</div>
 			<h2 className="content__title">Все пиццы</h2>
 			<div className="content__items">
