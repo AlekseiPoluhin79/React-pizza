@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import logoSvg from './assets/img/pizza-logo.svg';
 
-const Header = ({ searchValue, setSearchValue }) => {
+const Header = () => {
 	const { items, totalPrice } = useSelector((state) => state.cart);
 
 	return (
@@ -20,7 +20,7 @@ const Header = ({ searchValue, setSearchValue }) => {
 						</div>
 					</div>
 				</Link>
-				<Search searchValue={searchValue} setSearchValue={setSearchValue} />
+				<Search />
 				<div className="header_cart">
 					<Link to="/cart" className="button button--cart">
 						<span>{totalPrice} ₽</span>

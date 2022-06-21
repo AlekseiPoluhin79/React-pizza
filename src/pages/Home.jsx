@@ -7,8 +7,10 @@ import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock';
 import Pagination from '../components/Pagination';
+import { SearchContext } from '../App';
 
 const Home = () => {
+	const { searchValue } = React.useContext(SearchContext);
 	const dispatch = useDispatch();
 	const categoryId = useSelector((state) => state.filter.categoryId);
 	const [ sortType, setSortType ] = React.useState({
@@ -35,7 +37,7 @@ const Home = () => {
 
 			window.scrollTo(0, 0);
 		},
-		[ carrentPage ]
+		[ carrentPage, searchValue, categoryId ]
 	);
 
 	return (
