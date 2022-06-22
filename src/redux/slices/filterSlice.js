@@ -9,15 +9,15 @@ const initialState = {
 };
 
 const filterSlice = createSlice({
-	name: 'filter',
+	name: 'filters',
 	initialState,
 	reducers: {
-		setcategoryId(state, action) {
+		setCategoryId(state, action) {
 			state.categoryId = action.payload;
 		}
 	}
 });
 
-export const { setcategoryId } = filterSlice.actions;
+export const { setCategoryId } = filterSlice.actions;
 
 export default filterSlice.reducer;
