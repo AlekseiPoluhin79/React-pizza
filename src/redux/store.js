@@ -8,3 +8,6 @@ export const store = configureStore({
 		cart
 	}
 });
+
+console.log(store);
+console.log(configureStore);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Sort = ({ value, onChangSort }) => {
+const Sort = ({ value, onChangeSort }) => {
 	const [ open, setOpen ] = React.useState(false);
 	const sortRef = React.useRef();
 	const list = [
@@ -10,7 +10,7 @@ const Sort = ({ value, onChangSort }) => {
 	];
 
 	const onClickListItem = (i) => {
-		onChangSort(i);
+		onChangeSort(i);
 		setOpen(false);
 	};
 
