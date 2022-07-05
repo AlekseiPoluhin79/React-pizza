@@ -2,6 +2,6 @@
 
 **Stack:**
 
-*ReactJS + хуки
-*React Router
-*classnames
+  *ReactJS + хуки
+  *React Router
+  *classnames
